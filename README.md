@@ -1,18 +1,19 @@
-# 20184474 박기창 오픈SW 과제 
+20184474 박기창 오픈SW 과제 
+=============
 ## 1) getopts
 
 * ### getopts?
 
   주어진 옵션에 값을 저장할수 있게 도와주는 명령어이다.
-  
+
 * ### getopts 사용하기
-  
-  while getopts a:e:c opt \
+  ```  
+  while getopts a:e:c opt 
   do
   
       echo "opt=$opt, OPTARG=$OPTARG"
   done
-  
+  ```  
   option을 정의할 때 뒤에 : 이 있으면 option안에 값을 넣을 수 있다\
   ex) a:
   
@@ -30,7 +31,7 @@
       
   
 * ### 쉘스크립트에서 직접 만들고 활용하기
-  
+  ```
   #!/bin/bash 
 
   while getopts a:e:c:d opt 
@@ -55,7 +56,7 @@
       esac   
       
    done
- 
+   ```
  **실행결과**
  ![실행결과](https://user-images.githubusercontent.com/93646339/142413567-49b3b6b0-3a58-461b-ac7a-9cd9d7e54050.PNG)
 
@@ -69,10 +70,10 @@
 * ### getopt 사용하기  
   긴 옵션 --> -l\
   짧은 옵션 --> -o
-  
-  options="$(getopt -o a:e:c:d -l apple:,exam:,cute:,dia -- "$@")"\
+  ```
+  options="$(getopt -o a:e:c:d -l apple:,exam:,cute:,dia -- "$@")"
   eval set -- "$options"
-  
+  ```
   
   짧은 옵션을 지정할 때에는 getopts option 지정할때와 똑같이 하면 되지만 \
   긴 옵션을 지정할 때에는 옵션을 ,(콤마)를 사용하여 구분지어야하며\
@@ -93,18 +94,18 @@
       eval은 문자열을 명령어로 인식하는 명령어이다.
   
       ex)
-      
+          ```
           a="ls -al"
           echo "$a"
           eval "$a"
-  
+          ```
       **실행결과**
       ![실행결과](https://user-images.githubusercontent.com/93646339/142441803-453d3db7-74b0-4ecc-be7d-7501749c0765.PNG)
    
   
   
 * ### 쉘스크립트에서 직접 만들고 활용하기  
-
+  ```bash
   #!/bin/bash
   
   options="$(getopt -o a:e:c:d -l apple:,exam:,cute:,dia -- "$@")"
@@ -136,10 +137,20 @@
   done
   
   echo "$@"
-  
+  ```
   
   **실행결과**
- ![실행결과](https://user-images.githubusercontent.com/93646339/142440973-b0feccbf-7371-465e-ac3c-b7a272a28f28.PNG)
+  ![실행결과](https://user-images.githubusercontent.com/93646339/142440973-b0feccbf-7371-465e-ac3c-b7a272a28f28.PNG)
+  ---
+    **getopt,getopts 비교**
+    
+    
+   
+    ||getopt|getopts|
+    |:---:|:---:|:---:|
+    |지정되지 않은 option을 사용했을 때 오류가 발생하는가?|O|O|
+    |값이 필요한 option에 값을 넣지 않았을 때 오류가 발생하는가?|O|O|
+    |긴 옵션을 사용 가능한가?|X|O|
 
 
 ## 3) sed
