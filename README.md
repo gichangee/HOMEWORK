@@ -138,10 +138,9 @@
 * **실행결과**
   ![실행결과](https://user-images.githubusercontent.com/93646339/142440973-b0feccbf-7371-465e-ac3c-b7a272a28f28.PNG)
   ---
+  
 * **getopt,getopts 비교**
     
-    
-   
     ||getopt|getopts|
     |:---:|:---:|:---:|
     |지정되지 않은 option을 사용했을 때 오류가 발생하는가?|O|O|
