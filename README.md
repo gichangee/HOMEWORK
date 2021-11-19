@@ -10,7 +10,6 @@
   ```  
   while getopts a:e:c opt 
   do
-  
       echo "opt=$opt, OPTARG=$OPTARG"
   done
   ```  
@@ -31,13 +30,12 @@
       
   
 * ### 쉘스크립트에서 직접 만들고 활용하기
-  ```
+  ```bash
   #!/bin/bash 
 
   while getopts a:e:c:d opt 
   
-  do 
-       
+  do   
       case $opt in     
         a)
           A=$OPTAGR
@@ -52,12 +50,10 @@
           echo "hello world";;
         *)
           echo "올바른 option 값을 넣으시오";;
-     
       esac   
-      
-   done
+  done
    ```
- **실행결과**
+ * **실행결과**
  ![실행결과](https://user-images.githubusercontent.com/93646339/142413567-49b3b6b0-3a58-461b-ac7a-9cd9d7e54050.PNG)
 
       
@@ -93,12 +89,12 @@
    * #### eval?
       eval은 문자열을 명령어로 인식하는 명령어이다.
   
-      ex)
-          ```
-          a="ls -al"
-          echo "$a"
-          eval "$a"
-          ```
+       ```
+       a="ls -al"
+       echo "$a"
+       eval "$a"
+       ```
+          
       **실행결과**
       ![실행결과](https://user-images.githubusercontent.com/93646339/142441803-453d3db7-74b0-4ecc-be7d-7501749c0765.PNG)
    
@@ -139,10 +135,10 @@
   echo "$@"
   ```
   
-  **실행결과**
+* **실행결과**
   ![실행결과](https://user-images.githubusercontent.com/93646339/142440973-b0feccbf-7371-465e-ac3c-b7a272a28f28.PNG)
   ---
-    **getopt,getopts 비교**
+* **getopt,getopts 비교**
     
     
    
@@ -154,5 +150,47 @@
 
 
 ## 3) sed
+
+* ### sed?
+  텍스트 파일 내용 출력,수정,추가,제거 등을 할수있게 해주는 명령어이다.
+
+* ### sed 사용하기
+  ```
+  sed option 범위 파일이름
+  ```
+  |대표적인 옵션|정의|
+  |:---:|:---:|
+  |-n| 출력 범위 지정 |
+  |-e| 다양한 출력 범위를 나타내고 싶을 때 사용|
+  |-f| sed 지시어 스크립트 파일을 사용하기 위해 사용|
+  
+  * sed -n 사용하기
+  
+    main.py 파일 안의 내용\
+    1\
+    12\
+    123\
+    1234\
+    12345
+  
+    **예시**
+    
+    ![캡처](https://user-images.githubusercontent.com/93646339/142604609-15e706eb-f8b1-46f5-b0e5-200c4660b116.PNG)
+    '1p' --> 첫번째 줄만 출력\
+    '1,3p' ---> 첫번째 줄부터 세번째 줄까지 출력\
+    '1,%p' --->처음부터 끝까지 출력\
+    '1p;3p' ---> 첫번째 줄과 세번째 줄만 출력
+
+   
+    
+  * sed -e 사용하기
+
+    **예시**
+    
+
+    
+
+  
+  
 
 ## 4) awk
