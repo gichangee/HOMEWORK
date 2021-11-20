@@ -38,7 +38,7 @@
   do   
       case $opt in     
         a)
-          A=$OPTAGR
+          A=$OPTARG
           echo "$A";;
         e)
           E=$OPTARG
