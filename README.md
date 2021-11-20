@@ -237,7 +237,8 @@
      아래의 명령어를 실행하면
 
      ```bash
-     awk '{print $1}' main.py #main.py의 공백을 기준으로 나누어진 첫번째 필드를 출력하라는 의미
+     awk '{print $1}' main.py # main.py의 공백을 기준으로 나누어진 첫번째 필드를 출력하라는 의미
+     awk '{print "first num: " $1}' main.py #앞에 추가문구를 추가하여 출력
      
      ```
 
@@ -248,6 +249,11 @@
      1
      1
      1
+     first num: 1
+     first num: 1
+     first num: 1
+     first num: 1
+     first num: 1
      ```
 * ### awk 활용법
   1) 구분값을 변경하기
@@ -300,13 +306,21 @@
 
       아래의 명령어를 실행하면
       ```bash
+      awk '{print $1+5}' main.py                  #첫번째 필드에 5를 더한값을 출력
+      
       awk '{sum=sum+$1}END{print sum}' main.py    #합계 계산
+      
       awk '{sum=sum+$1}END{print sum/NR}' main.py #평균 계산
       ```
 
       실행결과
       ```
+      105
+      205
+      305
+      
       600
+      
       200
       ```
 
@@ -319,15 +333,21 @@
         c b a
 
         ```bash
-        awk '$1=="a"' # 첫번째 필드에 "a"가 있는 행만 출력
+        awk '$1=="a"' main.py # 첫번째 필드에 "a"가 있는 행만 출력
+        
+        awk '/a/' main.py     # 전체 텍스트 중에 a가 포함되어 있는 행 출력
 
-        awk '$1!="a"' # 첫번째 필드에 "a"가 없는 행만 출력
+        awk '$1!="a"' main.py # 첫번째 필드에 "a"가 없는 행만 출력
         ```
 
         실행결과
         ```
         a b c
         a p p
+        
+        a b c
+        a p p
+        c b a
 
         c b a
         ```
