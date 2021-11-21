@@ -70,95 +70,95 @@
       
 ## 2) getopt
 
-* ### getopt?
-  getopts는 짧은 옵션 밖에 사용하지 못하는 반면에 getopt는\
-  긴옵션과 짧은 옵션을 둘다 활용할수있는 명령어이다
+   * ### getopt?
+     getopts는 짧은 옵션 밖에 사용하지 못하는 반면에 getopt는\
+     긴옵션과 짧은 옵션을 둘다 활용할수있는 명령어이다
+
+
+   * ### getopt 사용하기  
+     긴 옵션 --> -l\
+     짧은 옵션 --> -o
+
+     ```bash
+     options="$(getopt -o a:e:c:d -l apple:,exam:,cute:,dia -- "$@")"
+     eval set -- "$options"
+     ```
+
+     짧은 옵션을 지정할 때에는 getopts option 지정할때와 똑같이 하면 되지만 \
+     긴 옵션을 지정할 때에는 옵션을 ,(콤마)를 사용하여 구분지어야하며\
+     getopt 마지막에는 -- "$@" 를 붙여줘야 한다.
+
+     지정하지 않은 옵션을 넣었을 때 오류 발생\
+     값이 필요한 옵션에 값을 넣지 않았을때 오류 발생
+
+     ./main.py -r          --->오류 발생\
+     ./main.py --r         --->오류 발생\
+     ./main.py -a          --->오류 발생\
+     ./main.py --apple     --->오류 발생\
+     ./main.py --apple 123 --->정상\
+     ./main.py -a 123      --->정상
+
+
+      * #### eval?
+         eval은 문자열을 명령어로 인식하는 명령어이다.
+
+          ```bash
+          a="ls -al"
+          echo "$a"
+          eval "$a"
+          ```
+
+         **실행결과**
+         ![실행결과](https://user-images.githubusercontent.com/93646339/142441803-453d3db7-74b0-4ecc-be7d-7501749c0765.PNG)
+
+
+
+   * ### 쉘스크립트에서 직접 만들고 활용하기  
+     ```bash
+     #!/bin/bash
+
+     options="$(getopt -o a:e:c:d -l apple:,exam:,cute:,dia -- "$@")"
+
+     eval set -- "$options"
+
+     while true
+
+     do
+
+          case $1 in
+
+           -a|--apple)
+                    echo "$2"
+                    shift 2;; #옵션과 옵션안에 있는 값 총 2개 이기 때문에 shift 2를 해줘야 한다
+           -e|--exam)
+                     echo "$2"
+                     shift 2;;
+           -c|--cute)
+                     echo "$2"
+                     shift 2;;
+           -d|--dia)
+                     echo "hello world"
+                     shift ;;
+            --)
+                     shift
+                     break ;;
+           esac
+     done
+
+     echo "$@"
+     ```
+
+   * **실행결과**
+     ![실행결과](https://user-images.githubusercontent.com/93646339/142440973-b0feccbf-7371-465e-ac3c-b7a272a28f28.PNG)
   
-  
-* ### getopt 사용하기  
-  긴 옵션 --> -l\
-  짧은 옵션 --> -o
-  
-  ```bash
-  options="$(getopt -o a:e:c:d -l apple:,exam:,cute:,dia -- "$@")"
-  eval set -- "$options"
-  ```
-  
-  짧은 옵션을 지정할 때에는 getopts option 지정할때와 똑같이 하면 되지만 \
-  긴 옵션을 지정할 때에는 옵션을 ,(콤마)를 사용하여 구분지어야하며\
-  getopt 마지막에는 -- "$@" 를 붙여줘야 한다.
-  
-  지정하지 않은 옵션을 넣었을 때 오류 발생\
-  값이 필요한 옵션에 값을 넣지 않았을때 오류 발생
-  
-  ./main.py -r          --->오류 발생\
-  ./main.py --r         --->오류 발생\
-  ./main.py -a          --->오류 발생\
-  ./main.py --apple     --->오류 발생\
-  ./main.py --apple 123 --->정상\
-  ./main.py -a 123      --->정상
-  
-  
-   * #### eval?
-      eval은 문자열을 명령어로 인식하는 명령어이다.
-  
-       ```bash
-       a="ls -al"
-       echo "$a"
-       eval "$a"
-       ```
-          
-      **실행결과**
-      ![실행결과](https://user-images.githubusercontent.com/93646339/142441803-453d3db7-74b0-4ecc-be7d-7501749c0765.PNG)
-   
-  
-  
-* ### 쉘스크립트에서 직접 만들고 활용하기  
-  ```bash
-  #!/bin/bash
-  
-  options="$(getopt -o a:e:c:d -l apple:,exam:,cute:,dia -- "$@")"
-  
-  eval set -- "$options"
-  
-  while true
-  
-  do
- 
-       case $1 in
-    
-        -a|--apple)
-                 echo "$2"
-                 shift 2;; #옵션과 옵션안에 있는 값 총 2개 이기 때문에 shift 2를 해줘야 한다
-        -e|--exam)
-                  echo "$2"
-                  shift 2;;
-        -c|--cute)
-                  echo "$2"
-                  shift 2;;
-        -d|--dia)
-                  echo "hello world"
-                  shift ;;
-         --)
-                  shift
-                  break ;;
-        esac
-  done
-  
-  echo "$@"
-  ```
-  
-* **실행결과**
-  ![실행결과](https://user-images.githubusercontent.com/93646339/142440973-b0feccbf-7371-465e-ac3c-b7a272a28f28.PNG)
---- 
-  
-* getopt vs getopts
-    
-    ||getopt|getopts|
-    |:---:|:---:|:---:|
-    |지정되지 않은 option을 사용했을 때 오류가 발생하는가?|O|O|
-    |값이 필요한 option에 값을 넣지 않았을 때 오류가 발생하는가?|O|O|
-    |긴 옵션을 사용 가능한가?|X|O|
+   * **getopt vs getopts**
+
+
+      ||getopt|getopts|
+      |:---:|:---:|:---:|
+      |지정되지 않은 option을 사용했을 때 오류가 발생하는가?|O|O|
+      |값이 필요한 option에 값을 넣지 않았을 때 오류가 발생하는가?|O|O|
+      |긴 옵션을 사용 가능한가?|X|O|
 
 
 ## 3) sed
