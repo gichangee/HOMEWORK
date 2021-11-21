@@ -4,7 +4,7 @@
 
 1) [getopts](https://github.com/gichangee/HOMEWORK#1-getopts) 
 2) [getopt](https://github.com/gichangee/HOMEWORK#2-getopt) 
-   1) [getopts vs getopt]()
+   1) [getopts vs getopt](###getopt-vs-getopts)
 4) [sed](https://github.com/gichangee/HOMEWORK#3-sed) 
 5) [awk](https://github.com/gichangee/HOMEWORK#4-awk) 
 
@@ -151,7 +151,7 @@
    * **실행결과**
      ![실행결과](https://user-images.githubusercontent.com/93646339/142440973-b0feccbf-7371-465e-ac3c-b7a272a28f28.PNG)
   
-   * **getopt vs getopts**
+   ### getopt vs getopts
 
 
       ||getopt|getopts|
