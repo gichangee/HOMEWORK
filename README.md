@@ -87,30 +87,19 @@
      짧은 옵션을 지정할 때에는 getopts option 지정할때와 똑같이 하면 되지만 \
      긴 옵션을 지정할 때에는 옵션을 ,(콤마)를 사용하여 구분지어야하며\
      getopt 마지막에는 -- "$@" 를 붙여줘야 한다.
-
-     지정하지 않은 옵션을 넣었을 때 오류 발생\
-     값이 필요한 옵션에 값을 넣지 않았을때 오류 발생
-
-     ./main.py -r          --->오류 발생\
-     ./main.py --r         --->오류 발생\
-     ./main.py -a          --->오류 발생\
-     ./main.py --apple     --->오류 발생\
-     ./main.py --apple 123 --->정상\
-     ./main.py -a 123      --->정상
-
-
-      * #### eval?
-         eval은 문자열을 명령어로 인식하는 명령어이다.
-
-          ```bash
-          a="ls -al"
-          echo "$a"
-          eval "$a"
-          ```
-
-         **실행결과**
-         ![실행결과](https://user-images.githubusercontent.com/93646339/142441803-453d3db7-74b0-4ecc-be7d-7501749c0765.PNG)
-
+      
+   * ### getopt 사용할때 주의점
+     1) 지정하지 않은 옵션을 넣었을 때 오류 발생
+      
+        ./main.py -r          --->오류 발생\
+        ./main.py --r         --->오류 발생
+        
+     2) 값이 필요한 옵션에 값을 넣지 않았을때 오류 발생 
+     
+        ./main.py -a          --->오류 발생\
+        ./main.py --apple     --->오류 발생\
+        ./main.py --apple 123 --->정상\
+        ./main.py -a 123      --->정상
 
 
    * ### 쉘스크립트에서 직접 만들고 활용하기  
@@ -150,6 +139,18 @@
 
    * **실행결과**
      ![실행결과](https://user-images.githubusercontent.com/93646339/142440973-b0feccbf-7371-465e-ac3c-b7a272a28f28.PNG)
+     
+     * #### eval?
+         eval은 문자열을 명령어로 인식하는 명령어이다.
+
+          ```bash
+          a="ls -al"
+          echo "$a"
+          eval "$a"
+          ```
+
+         **실행결과**
+         ![실행결과](https://user-images.githubusercontent.com/93646339/142441803-453d3db7-74b0-4ecc-be7d-7501749c0765.PNG)
   
    * ### getopt vs getopts
 
