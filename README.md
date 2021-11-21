@@ -90,7 +90,7 @@
 
      ```bash
      options="$(getopt -o a:e:c:d -l apple:,exam:,cute:,dia -- "$@")"
-     eval set -- "$options"
+     echo "$options"
      ```
 
      짧은 옵션을 지정할 때에는 getopts option 지정할때와 똑같이 하면 되지만 \
