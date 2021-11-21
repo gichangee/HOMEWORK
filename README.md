@@ -13,7 +13,7 @@
 
 * ### getopts?
 
-  주어진 옵션에 값을 저장할수 있게 도와주는 명령어이다.
+  주어진 옵션에 값을 저장할 수 있게 도와주는 명령어이다.
 
 * ### getopts 사용하기
   ```bash
@@ -26,7 +26,7 @@
   opt는 옵션을 저장하는 변수\
   OPTARG는 옵션안에 들어있는 값을 저장하는 변수이다
   
-  option을 정의할 때 뒤에 : 이 있으면 option안에 값을 넣을 수 있다\
+  option을 정의할 때 뒤에 ':' 이 있으면 option안에 값을 넣을 수 있다\
   ex) a:
   
   a와e는 값을 넣을 수 있지만 c는 넣을 수 없다
@@ -73,14 +73,15 @@
   done
    ```
  * **실행결과**
- ![실행결과](https://user-images.githubusercontent.com/93646339/142413567-49b3b6b0-3a58-461b-ac7a-9cd9d7e54050.PNG)
+ ![캡처](https://user-images.githubusercontent.com/93646339/142749055-0f2124eb-81a8-4584-9e44-8d25731a73b1.PNG)
+
 
       
 ## 2) getopt
 
    * ### getopt?
-     getopts는 짧은 옵션 밖에 사용하지 못하는 반면에 getopt는\
-     긴옵션과 짧은 옵션을 둘다 활용할수있는 명령어이다
+     getopts는 짧은 옵션 밖에 사용하지 못하는 반면에 \
+     getopt는 긴 옵션과 짧은 옵션을 둘다 활용 할 수 있는 명령어이다
 
 
    * ### getopt 사용하기  
@@ -126,7 +127,7 @@
 
            -a|--apple)
                     echo "$2"
-                    shift 2;; #옵션과 옵션안에 있는 값 총 2개 이기 때문에 shift 2를 해줘야 한다
+                    shift 2;; #옵션과 옵션안에 있는 값 총 2개의 값을 옮겨야 하기 때문에 shift 2를 해줘야 한다
            -e|--exam)
                      echo "$2"
                      shift 2;;
@@ -135,7 +136,7 @@
                      shift 2;;
            -d|--dia)
                      echo "hello world"
-                     shift ;;
+                     shift ;; #옵션만 있기 때문에 shift만 해주면 된다.
             --)
                      shift
                      break ;;
