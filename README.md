@@ -1,5 +1,10 @@
 20184474 박기창 오픈SW 과제 
 =============
+목차\
+[1. getopts](https://github.com/gichangee/HOMEWORK#1-getopts)
+[2. getopt]
+[3. sed]
+[4. awk]
 ## 1) getopts
 
 * ### getopts?
