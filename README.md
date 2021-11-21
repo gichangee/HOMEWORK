@@ -1,13 +1,13 @@
 20184474 박기창 오픈SW 과제 
 =============
-목차\
-[1. getopts](https://github.com/gichangee/HOMEWORK#1-getopts) 
+**목차**
 
-[2. getopt](https://github.com/gichangee/HOMEWORK#2-getopt)
+1) [getopts](https://github.com/gichangee/HOMEWORK#1-getopts) 
+2) [getopt](https://github.com/gichangee/HOMEWORK#2-getopt) 
+3) [sed](https://github.com/gichangee/HOMEWORK#3-sed) 
+4) [awk](https://github.com/gichangee/HOMEWORK#4-awk) 
 
-[3. sed](https://github.com/gichangee/HOMEWORK#3-sed)
 
-[4. awk](https://github.com/gichangee/HOMEWORK#4-awk)
 ## 1) getopts
 
 * ### getopts?
@@ -70,6 +70,7 @@
 ## 2) getopt
 
 * ### getopt?
+  getopts는 짧은 옵션 밖에 사용하지 못하는 반면에 getopt는\
   긴옵션과 짧은 옵션을 둘다 활용할수있는 명령어이다
   
   
